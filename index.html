@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Pokedex</title>
+</head>
+
+<body>
+    <div id="catch-Pokemon">
+        <img class="pokemon-icon" src="https://pluspng.com/img-png/pokemon-logo-png-pokemon-logo-png-2000.png">
+
+        <input id="getPokemon" spellcheck="false" onfocus="this.value=''" type="text" class="pkmName"
+            placeholder="Name or ID" name="getPokemon">
+
+        <button type="submit" id="submitPokemon" onclick="pokemonSearch()"><i class="pokeball"></i></button>
+        <!-- <i class="pokeball"></i> -->
+        <!-- <input id="submitPokemon" type="submit" value="CATCH!" onclick="writeInfosOnSecondSlide()">  -->
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div id="firstSlide" class="swiper-slide"></div>
+            <div id="secondSlide" class="swiper-slide">
+                <p class="titleNAME">
+                <p class="pokeName"></p>
+                </p>
+                <p class="titleTYPE"></p>
+                <p class="pokeType"></p>
+                <p class="titleABILITY"></p>
+                <p class="pokeAbilities"></p>
+            </div>
+            <div id="thirdSlide" class="swiper-slide"></div>
+            <div id="fourthSlide" class="swiper-slide"></div>
+            <div id="fifthSlide" class="swiper-slide"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- <div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div> -->
+    
+    <script src="app.js"></script>
+    <script type="text/javascript">
+        var swiper = new Swiper('.swiper-container', {
+            effect: 'cube',
+            grabCursor: true,
+            cubeEffect: {
+                shadow: true,
+                slideShadows: true,
+                shadowOffset: 20,
+                shadowScale: 0.94,
+            },
+                pagination: {
+                    el: '.swiper-pagination',
+                    dynamicBullets: true,
+                },
+            });
+    </script>
+</body>
+
+</html>
