@@ -10,8 +10,6 @@ html, body {
 	top: 50%;
 	margin-left: -150px;
 	margin-top: -150px;
-	/* animation: wholeTurn 10s infinite;
-	transform-style: preserve-3d; */
   }
   .swiper-slide {
 	background-position: center;
@@ -61,21 +59,16 @@ html, body {
 .pokeball {
 	content: url(pokeball.svg);
     width: 30px;
-	/* animation: spinning 2s infinite;
-	animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); */
 }
 .pokeball:hover {
 	content: url(pokeball.svg);
 	/* content: url(netclipart.com-pokemon-ball-clipart-2423190.png); */
 	width: 50px;
 	cursor: pointer;
-	animation: spinning 5s;
+	animation: growing 5s;
 	animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	/* animation: spinning 1.5s infinite; */
+	/* animation: growing 1.5s infinite; */
 }
-/* #secondSlide {
-	color: blueviolet;
-} */
 .titleNAME {
 	background-color: #2980b9;
 	margin: 1em auto;
@@ -127,29 +120,12 @@ html, body {
 #thirdSlide {
 	text-align: center;
 	font-family: 'Courier New', Courier, monospace;
-	/* font-size: larger; */
 }
 .ability {
 	color: gray;
 }
 
-/* #firstSlide  { transform: rotateY(0deg) translateZ(5em); }
-#secondSlide  { transform: rotateY(90deg) translateZ(5em);  }
-#thirdSlide   { transform: rotateY(-90deg) translateZ(5em); }
-#fourthSlide  { transform: rotateY(180deg) translateZ(5em); } */
-/* @keyframes wholeTurn {
-	0% {
-		transform: rotate3d(0, 0, 0, 0deg)
-	  }
-	  100% {
-		transform: rotate3d(1, 1, 1, 359deg);
-	  }
-} */
-/* @keyframes wholeTurn {
-	from  { transform: translateZ(5em) rotateY(0deg);   }
-	to    { transform: translateZ(5em) rotateY(360deg); }
-  } */
-@keyframes spinning {
+@keyframes growing {
 	0% {
 	  transform: scale(0.7);
 	}
@@ -157,11 +133,3 @@ html, body {
 @-ms-viewport{
 	width: device-width;
 }
-/* @keyframes spinning {
-	0% {
-	  transform: rotate(0deg);
-	}
-	100% {
-	  transform: rotate(359deg);
-	}
-  } */
