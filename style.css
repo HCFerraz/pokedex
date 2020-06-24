@@ -123,9 +123,9 @@ html, body {
 	padding-top: 50px;
 	width: 210%; 
 	height: 300px;
-	box-shadow: 0 0 1rem 0 rgba(255, 255, 255, .15);
+	box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.4);
 	border-radius: 24px;
-	background-color: rgba(66, 36, 36, 0.15);
+	background-color: rgba(66, 36, 36, 0.1);
 	backdrop-filter: blur(5px);
 }
 

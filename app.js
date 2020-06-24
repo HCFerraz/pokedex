@@ -21,14 +21,6 @@ function pokemonSearch() {
   pokeAbilities(receiveData, regex);
 };
 
-// function appendChildren(parent, children) {
-//   children.forEach(child => parent.appendChild(child))
-// }
-// var divs = document.createElement('div')
-// var ps = document.createElement('p')
-// var array = [ps]
-// console.log(appendChildren(divs, array))
-
 // Allows search with 'ENTER' button
 document.getElementById("getPokemon")
   .addEventListener("keyup", function (event) {
@@ -188,13 +180,18 @@ let pokeTypes = (receiveData, regex) => {
     .then(pokeData => {
       // The title Type receives its text and is now seeing in the slide
       document.querySelector('.titleTYPE').innerText = `Type`;
-      document.querySelector('.titleDoubleDamageFrom').innerText = `Double Damage From`;
-      document.querySelector('.titleDoubleDamageTo').innerText = `Double Damage To`;
-      document.querySelector('.titleHalfDamageFrom').innerText = `Half Damage From`;
+      document.querySelector('.titleDoubleDamageFrom')
+      .innerText = `Double Damage From`;
+      document.querySelector('.titleDoubleDamageTo')
+      .innerText = `Double Damage To`;
+      document.querySelector('.titleHalfDamageFrom')
+      .innerText = `Half Damage From`;
       document.querySelector('.titleHalfDamageTo').innerText = `Half Damage To`;
       document.querySelector('.titleNoDamageFrom').innerText = `No Damage From`;
       document.querySelector('.titleNoDamageTo').innerText = `No Damage To`;
-      // An array to receive each type
+      // Arrays to receive each type
+      /* The arrays doubleDamageTo, halfDamageTo and noDamageTo work based on 
+      each pokémon type. That means that they don't respect the type of the attack */
       let typesNames = [];
       let doubleDamageFrom = [];
       let doubleDamageTo = [];
@@ -228,6 +225,7 @@ let pokeTypes = (receiveData, regex) => {
             thisTypeData.damage_relations.no_damage_to.forEach(type => {
               noDamageTo.push(type.name);
             });
+            // Loops for styling each type
             for (let a = 0; a < doubleDamageFrom.length; a++) {
               for (let i = 0; i < allTypesVerifier.length; i++) {
                 if (doubleDamageFrom[a] == allTypesVerifier[i]) {
@@ -270,40 +268,100 @@ let pokeTypes = (receiveData, regex) => {
                 }
               }
             }
-            // var exchanger = halfDamageTo.filter(value => doubleDamageTo.includes(value))
-            // console.log(exchanger)
-            // let i =0
-            // while(true) {
-            //   if(!exchanger == '') {
-            //     var teste = halfDamageTo.indexOf(exchanger[i])
-            //     halfDamageTo.splice(teste, 1)
-            //     exchanger.shift()
-            //     i++
-            //   }
-            //   if(exchanger == '') {
-            //     break
-            //   }
-            // }
-            // if(noDamageFrom.length == 0) {
-            //   noDamageFrom.push(allTypesStylized[18])
-            // }
-            // if(noDamageTo.length == 0) {
-            //   noDamageTo.push(allTypesStylized[18])
-            // }
-            let doubleDamageFromEdited = [...new Set(doubleDamageFrom)].join().replace(regex, ' ')
-            document.querySelector('.doubleDamageFromTypes').innerHTML = `${doubleDamageFromEdited}`;
-            let doubleDamageToEdited = [...new Set(doubleDamageTo)].join().replace(regex, ' ')
-            document.querySelector('.doubleDamageToTypes').innerHTML = `${doubleDamageToEdited}`;
-            let halfDamageFromEdited = [...new Set(halfDamageFrom)].join().replace(regex, ' ')
-            document.querySelector('.halfDamageFromTypes').innerHTML = `${halfDamageFromEdited}`;
-            let halfDamageToEdited = [...new Set(halfDamageTo)].join().replace(regex, ' ')
-            document.querySelector('.halfDamageToTypes').innerHTML = `${halfDamageToEdited}`;
-            let noDamageFromEdited = [...new Set(noDamageFrom)].join().replace(regex, ' ')
-            document.querySelector('.noDamageFromTypes').innerHTML = `${noDamageFromEdited}`;
-            let noDamageToEdited = [...new Set(noDamageTo)].join().replace(regex, ' ')
-            document.querySelector('.noDamageToTypes').innerHTML = `${noDamageToEdited}`;
+            // A filter to select types in the intersection
+            let toIntersections = halfDamageTo
+            .filter(types => doubleDamageTo.includes(types))
+            // A loop to disjoint the filtered array
+            for(let i = 0; i < toIntersections.length; i++) {
+              if(!toIntersections == '') {
+                let typeIndex = halfDamageTo.indexOf(toIntersections[i])
+                halfDamageTo.splice(typeIndex, 1)
+                  toIntersections.shift()
+                  i--
+              }
+            }
+            let fromIntersections = halfDamageFrom
+            .filter(types => doubleDamageFrom.includes(types))
+            for(let i = 0; i < fromIntersections.length; i++) {
+              if(!fromIntersections == '') {
+                let typeIndex = halfDamageFrom.indexOf(fromIntersections[i])
+                halfDamageFrom.splice(typeIndex, 1)
+                fromIntersections.splice(i, 1)
+                i--
+              }
+            }
+            let noDamageHalfFromIntersections = halfDamageFrom
+            .filter(types => noDamageFrom.includes(types))
+            for(let i = 0; i < noDamageHalfFromIntersections.length; i++) {
+              if(!noDamageHalfFromIntersections == '') {
+                let typeIndex = halfDamageFrom
+                .indexOf(noDamageHalfFromIntersections[i])
+                halfDamageFrom.splice(typeIndex, 1)
+                noDamageHalfFromIntersections.splice(i, 1)
+                i--
+              }
+            }
+            let noDamageHalfToIntersections = halfDamageTo
+            .filter(types => noDamageTo.includes(types))
+            for(let i = 0; i < noDamageHalfToIntersections.length; i++) {
+              if(!noDamageHalfToIntersections == '') {
+                let typeIndex = halfDamageTo
+                .indexOf(noDamageHalfToIntersections[i])
+                halfDamageTo.splice(typeIndex, 1)
+                noDamageHalfToIntersections.splice(i, 1)
+                i--
+              }
+            }
+            let noDamageDoubleFromIntersections = doubleDamageFrom
+            .filter(types => noDamageFrom.includes(types))
+            for(let i = 0; i < noDamageDoubleFromIntersections.length; i++) {
+              if(!noDamageDoubleFromIntersections == '') {
+                let typeIndex = doubleDamageFrom
+                .indexOf(noDamageDoubleFromIntersections[i])
+                doubleDamageFrom.splice(typeIndex, 1)
+                noDamageDoubleFromIntersections.splice(i, 1)
+                i--
+              }
+            }
+            let noDamageDoubleToIntersections = doubleDamageTo
+            .filter(types => noDamageTo.includes(types))
+            for(let i = 0; i < noDamageDoubleToIntersections.length; i++) {
+              if(!noDamageDoubleToIntersections == '') {
+                let typeIndex = doubleDamageTo
+                .indexOf(noDamageDoubleToIntersections[i])
+                doubleDamageTo.splice(typeIndex, 1)
+                noDamageDoubleToIntersections.splice(i, 1)
+                i--
+              }
+            }
+            // The types that appear more that one time are removed from the array
+            let doubleDamageFromEdited = [...new Set(doubleDamageFrom)]
+            .join().replace(regex, ' ')
+            document.querySelector('.doubleDamageFromTypes')
+            .innerHTML = `${doubleDamageFromEdited}`;
+            let doubleDamageToEdited = [...new Set(doubleDamageTo)]
+            .join().replace(regex, ' ')
+            document.querySelector('.doubleDamageToTypes')
+            .innerHTML = `${doubleDamageToEdited}`;
+            let halfDamageFromEdited = [...new Set(halfDamageFrom)]
+            .join().replace(regex, ' ')
+            document.querySelector('.halfDamageFromTypes')
+            .innerHTML = `${halfDamageFromEdited}`;
+            let halfDamageToEdited = [...new Set(halfDamageTo)]
+            .join().replace(regex, ' ')
+            document.querySelector('.halfDamageToTypes')
+            .innerHTML = `${halfDamageToEdited}`;
+            let noDamageFromEdited = [...new Set(noDamageFrom)]
+            .join().replace(regex, ' ')
+            document.querySelector('.noDamageFromTypes')
+            .innerHTML = `${noDamageFromEdited}`;
+            let noDamageToEdited = [...new Set(noDamageTo)]
+            .join().replace(regex, ' ')
+            document.querySelector('.noDamageToTypes')
+            .innerHTML = `${noDamageToEdited}`;
           })
         })
+      // Each pokémon type that appears in the second slide are stylized
       for (let a = 0; a < typesNames.length; a++) {
         for (let i = 0; i < allTypesVerifier.length; i++) {
           if (typesNames[a] == allTypesVerifier[i]) {
@@ -311,14 +369,18 @@ let pokeTypes = (receiveData, regex) => {
           }
         }
       }
+      // The regex is used in the separation of the types
       let pokeTypesEdited = typesNames.join().replace(regex, ' | ')
       document.querySelector('.pokeType').innerHTML = `${pokeTypesEdited}`;
     })
 }
 
-var allTypesVerifier = ['water', 'normal', 'fire', 'electric', 'grass', 'bug', 'flying', 'fighting', 'ice', 'rock', 'poison', 'psychic',
-  'ghost', 'dragon', 'dark', 'steel', 'ground', 'fairy', 'none'];
+// Contains each pokémon type to verify and relate with the styling loops above
+var allTypesVerifier = ['water', 'normal', 'fire', 'electric', 'grass', 'bug',
+ 'flying', 'fighting', 'ice', 'rock', 'poison', 'psychic', 'ghost', 'dragon', 
+ 'dark', 'steel', 'ground', 'fairy', 'none'];
 
+// Contains each pokémon type stylized
 var allTypesStylized = [`<span style="background: #6890F0; border-style: solid none; border-width: 1px; border-top-color: #98D8D8; border-bottom-color: #807870; border-radius: 5px; padding: 0.15em; font-size: 10pt; color: #F8F8F8; text-shadow: 0px 1px 1px #807870;"><span style="color: #F8F8F8;">Water</span></span>`,
   `<span style="background: #A8A878; border-style: solid none; border-width: 1px; border-top-color: #D8D8D0; border-bottom-color: #705848; border-radius: 5px; padding: 0.15em; font-size: 10pt; color: #F8F8F8; text-shadow: 0px 1px 1px #807870;"><span style="color: #F8F8F8;">Normal</span></span>`,
   `<span style="background: #F08030; border-style: solid none; border-width: 1px; border-top-color: #F8D030; border-bottom-color: #C03028; border-radius: 5px; padding: 0.15em; font-size: 10pt; color: #F8F8F8; text-shadow: 0px 1px 1px #807870;"><span style="color: #F8F8F8;">Fire</span></span>`,
