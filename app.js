@@ -48,12 +48,18 @@ let pokeImage = (receiveData) => {
   getPokemonData(receiveData)
     // This allows that the getPokemonData returns the pokemon data
     .then(pokeData => {
-      /* Then, the pokeData receives the pokemon data from the api
-      used here for accessing the pokemon id */
+      // Analyze the id so it can be used in the api requisition below
+      let pokemonId = pokeData.id.toString()
+      if (pokemonId.length == 2) {
+        pokemonId = `0${pokemonId}`
+      }
+      if (pokemonId.length == 1) {
+        pokemonId = `00${pokemonId}`
+      }
       document.getElementById('firstSlide')
         .style
         .backgroundImage =
-        `url(https://pokeres.bastionbot.org/images/pokemon/${pokeData.id}.png)`;
+        `url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemonId}.png)`;
     })
 }
 
@@ -78,6 +84,7 @@ let pokeName = (receiveData) => {
 
 let pokeAbilities = (receiveData, regex) => {
   // Is remotely created the elements that will be printed in the second slide
+  // Creation of elements to be printed in the second slide
   var titleAbility = document.createElement('div')
   titleAbility.classList.add('titleABILITY')
   document.querySelector('#secondSlide').append(titleAbility)
@@ -86,7 +93,7 @@ let pokeAbilities = (receiveData, regex) => {
   document.querySelector('#secondSlide').appendChild(abilityName)
   getPokemonData(receiveData)
     .then(pokeData => {
-      // The title Ability receives its text and is now seeing in the slide
+      // The title Ability receives its text and is now seen in the slide
       document.querySelector(".titleABILITY").innerText = 'Ability';
       // An array to receive each ability name
       let abilitiesNames = [];
@@ -178,14 +185,14 @@ let pokeTypes = (receiveData, regex) => {
   document.querySelector('#fifthSlide').appendChild(noDamageFromNames)
   getPokemonData(receiveData)
     .then(pokeData => {
-      // The title Type receives its text and is now seeing in the slide
+      // The title Type receives its text and is now seen in the slide
       document.querySelector('.titleTYPE').innerText = `Type`;
       document.querySelector('.titleDoubleDamageFrom')
-      .innerText = `Double Damage From`;
+        .innerText = `Double Damage From`;
       document.querySelector('.titleDoubleDamageTo')
-      .innerText = `Double Damage To`;
+        .innerText = `Double Damage To`;
       document.querySelector('.titleHalfDamageFrom')
-      .innerText = `Half Damage From`;
+        .innerText = `Half Damage From`;
       document.querySelector('.titleHalfDamageTo').innerText = `Half Damage To`;
       document.querySelector('.titleNoDamageFrom').innerText = `No Damage From`;
       document.querySelector('.titleNoDamageTo').innerText = `No Damage To`;
@@ -270,20 +277,20 @@ let pokeTypes = (receiveData, regex) => {
             }
             // A filter to select types in the intersection
             let toIntersections = halfDamageTo
-            .filter(types => doubleDamageTo.includes(types))
+              .filter(types => doubleDamageTo.includes(types))
             // A loop to disjoint the filtered array
-            for(let i = 0; i < toIntersections.length; i++) {
-              if(!toIntersections == '') {
+            for (let i = 0; i < toIntersections.length; i++) {
+              if (!toIntersections == '') {
                 let typeIndex = halfDamageTo.indexOf(toIntersections[i])
                 halfDamageTo.splice(typeIndex, 1)
-                  toIntersections.shift()
-                  i--
+                toIntersections.shift()
+                i--
               }
             }
             let fromIntersections = halfDamageFrom
-            .filter(types => doubleDamageFrom.includes(types))
-            for(let i = 0; i < fromIntersections.length; i++) {
-              if(!fromIntersections == '') {
+              .filter(types => doubleDamageFrom.includes(types))
+            for (let i = 0; i < fromIntersections.length; i++) {
+              if (!fromIntersections == '') {
                 let typeIndex = halfDamageFrom.indexOf(fromIntersections[i])
                 halfDamageFrom.splice(typeIndex, 1)
                 fromIntersections.splice(i, 1)
@@ -291,44 +298,44 @@ let pokeTypes = (receiveData, regex) => {
               }
             }
             let noDamageHalfFromIntersections = halfDamageFrom
-            .filter(types => noDamageFrom.includes(types))
-            for(let i = 0; i < noDamageHalfFromIntersections.length; i++) {
-              if(!noDamageHalfFromIntersections == '') {
+              .filter(types => noDamageFrom.includes(types))
+            for (let i = 0; i < noDamageHalfFromIntersections.length; i++) {
+              if (!noDamageHalfFromIntersections == '') {
                 let typeIndex = halfDamageFrom
-                .indexOf(noDamageHalfFromIntersections[i])
+                  .indexOf(noDamageHalfFromIntersections[i])
                 halfDamageFrom.splice(typeIndex, 1)
                 noDamageHalfFromIntersections.splice(i, 1)
                 i--
               }
             }
             let noDamageHalfToIntersections = halfDamageTo
-            .filter(types => noDamageTo.includes(types))
-            for(let i = 0; i < noDamageHalfToIntersections.length; i++) {
-              if(!noDamageHalfToIntersections == '') {
+              .filter(types => noDamageTo.includes(types))
+            for (let i = 0; i < noDamageHalfToIntersections.length; i++) {
+              if (!noDamageHalfToIntersections == '') {
                 let typeIndex = halfDamageTo
-                .indexOf(noDamageHalfToIntersections[i])
+                  .indexOf(noDamageHalfToIntersections[i])
                 halfDamageTo.splice(typeIndex, 1)
                 noDamageHalfToIntersections.splice(i, 1)
                 i--
               }
             }
             let noDamageDoubleFromIntersections = doubleDamageFrom
-            .filter(types => noDamageFrom.includes(types))
-            for(let i = 0; i < noDamageDoubleFromIntersections.length; i++) {
-              if(!noDamageDoubleFromIntersections == '') {
+              .filter(types => noDamageFrom.includes(types))
+            for (let i = 0; i < noDamageDoubleFromIntersections.length; i++) {
+              if (!noDamageDoubleFromIntersections == '') {
                 let typeIndex = doubleDamageFrom
-                .indexOf(noDamageDoubleFromIntersections[i])
+                  .indexOf(noDamageDoubleFromIntersections[i])
                 doubleDamageFrom.splice(typeIndex, 1)
                 noDamageDoubleFromIntersections.splice(i, 1)
                 i--
               }
             }
             let noDamageDoubleToIntersections = doubleDamageTo
-            .filter(types => noDamageTo.includes(types))
-            for(let i = 0; i < noDamageDoubleToIntersections.length; i++) {
-              if(!noDamageDoubleToIntersections == '') {
+              .filter(types => noDamageTo.includes(types))
+            for (let i = 0; i < noDamageDoubleToIntersections.length; i++) {
+              if (!noDamageDoubleToIntersections == '') {
                 let typeIndex = doubleDamageTo
-                .indexOf(noDamageDoubleToIntersections[i])
+                  .indexOf(noDamageDoubleToIntersections[i])
                 doubleDamageTo.splice(typeIndex, 1)
                 noDamageDoubleToIntersections.splice(i, 1)
                 i--
@@ -336,31 +343,31 @@ let pokeTypes = (receiveData, regex) => {
             }
             // The types that appear more that one time are removed from the array
             let doubleDamageFromEdited = [...new Set(doubleDamageFrom)]
-            .join().replace(regex, ' ')
+              .join().replace(regex, ' ')
             document.querySelector('.doubleDamageFromTypes')
-            .innerHTML = `${doubleDamageFromEdited}`;
+              .innerHTML = `${doubleDamageFromEdited}`;
             let doubleDamageToEdited = [...new Set(doubleDamageTo)]
-            .join().replace(regex, ' ')
+              .join().replace(regex, ' ')
             document.querySelector('.doubleDamageToTypes')
-            .innerHTML = `${doubleDamageToEdited}`;
+              .innerHTML = `${doubleDamageToEdited}`;
             let halfDamageFromEdited = [...new Set(halfDamageFrom)]
-            .join().replace(regex, ' ')
+              .join().replace(regex, ' ')
             document.querySelector('.halfDamageFromTypes')
-            .innerHTML = `${halfDamageFromEdited}`;
+              .innerHTML = `${halfDamageFromEdited}`;
             let halfDamageToEdited = [...new Set(halfDamageTo)]
-            .join().replace(regex, ' ')
+              .join().replace(regex, ' ')
             document.querySelector('.halfDamageToTypes')
-            .innerHTML = `${halfDamageToEdited}`;
+              .innerHTML = `${halfDamageToEdited}`;
             let noDamageFromEdited = [...new Set(noDamageFrom)]
-            .join().replace(regex, ' ')
+              .join().replace(regex, ' ')
             document.querySelector('.noDamageFromTypes')
-            .innerHTML = `${noDamageFromEdited}`;
+              .innerHTML = `${noDamageFromEdited}`;
             let noDamageToEdited = [...new Set(noDamageTo)]
-            .join().replace(regex, ' ')
+              .join().replace(regex, ' ')
             document.querySelector('.noDamageToTypes')
-            .innerHTML = `${noDamageToEdited}`;
+              .innerHTML = `${noDamageToEdited}`;
           })
-        })
+      })
       // Each pokémon type that appears in the second slide are stylized
       for (let a = 0; a < typesNames.length; a++) {
         for (let i = 0; i < allTypesVerifier.length; i++) {
@@ -377,8 +384,8 @@ let pokeTypes = (receiveData, regex) => {
 
 // Contains each pokémon type to verify and relate with the styling loops above
 var allTypesVerifier = ['water', 'normal', 'fire', 'electric', 'grass', 'bug',
- 'flying', 'fighting', 'ice', 'rock', 'poison', 'psychic', 'ghost', 'dragon', 
- 'dark', 'steel', 'ground', 'fairy', 'none'];
+  'flying', 'fighting', 'ice', 'rock', 'poison', 'psychic', 'ghost', 'dragon',
+  'dark', 'steel', 'ground', 'fairy', 'none'];
 
 // Contains each pokémon type stylized
 var allTypesStylized = [`<span style="background: #6890F0; border-style: solid none; border-width: 1px; border-top-color: #98D8D8; border-bottom-color: #807870; border-radius: 5px; padding: 0.15em; font-size: 10pt; color: #F8F8F8; text-shadow: 0px 1px 1px #807870;"><span style="color: #F8F8F8;">Water</span></span>`,

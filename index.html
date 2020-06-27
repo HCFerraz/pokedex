@@ -3,22 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!-- Bootstrap for responsiviness -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Swiper Lib -->
     <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
@@ -26,32 +11,34 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- My CSS Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA0KWZALe2ugCYZl0Azs3RAOXk6ACrp6kAwL/DAExGPwDImosAwr7JAOvr6wCvr68A19baAMbEyQC1tLUAycjMACkjlAC3trsAJRC+AODf4wAjAN8ABAEEACQA3wApHqkAd4CIAId5cwAhCOUAPkRMAIt2cwDT0dUA6ejsAJycnADv7+8Aho32AB8JzgAjEL8ALSnlAM3M0AC2uMIA1+n5AL++wgD///sArq6uANbV2QAsFuwA7vHtALSztAC1tLcAHQzPAN/e4gAnFLoAJADhAPf39gAnAt4A0dDUAB0cIADo5+sANTTsAO7u7gCysrIA8fD0AKWgoQAgA9kApKSkAMzLzwAkAdwA9/f3AL3V9gAEBRMA5eXmAHyJ5ADV1NgArq2tAMLBxADq6+8AxMTEAOzr7wDv7u8AHwTUAN7d4QAAAAUAJhynACkYrQA0TK8ABgYFAPf2/gDQz9MAIgrmAPr//gD//vsAnnJrAP7//gDX1dwA7e3tABkRxgCMjIwAKSTsACchnAAbDNsAJAHeACYD2wC8vMAAICFwAPz7/AD7/vwArKysANTT1wD+//8AJRjkAP///wCenp4AxsXJAIqJjQAeDr4ARVFmAPHx8QAcFL4A3dzgALW1tQAfCNAAkIyNAAEBAQAmGK8AJxivAKejpAC6ursAz87SAMHAxACGhoUA7+7yAMfHxwCjnp8AysnNADAj4gAfBtQAJhmqACAE1wD19fUA4eDkAJWQkQC8u78A5+fnANPS1gCVqt4A/P7+AK+rqwD+/v4A//7+AMXEyACYl8EAGwDeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQGBvIAAAAAAAAAAAAAB5jD4MgCZIfwAAAAAAAAA8hH0vjUFQjo4yAAAAAABMd0mSEikeizs9gosAAAAAEDAPdymVa0Z0NUNOSgAAUI9XjQIKg11NbpOKXiwAAI47dH53Bw5IC25uPR83AACCFIUGandmBHY5IT07i4EALg0AegAAK3AsBUs4aJGWAFpZAB1bAFVxbJOUXHMxAAAtRBoDCAAcaVaQZ5cVIwAAADoWAQlRJ1NyeEJkF08AAAA2hkUZKlQYJD8lZIkAAAAAAGUzYhERe4ciYVgAAAAAAAAAdXxSiBM0G20AAAAAAAAAAAAAKF9jRwAAAAAAAPw/AADwDwAA4AcAAMADAADAAQAAgAEAAIABAACAAAAAgAAAAIABAACAAQAAwAEAAMADAADgBwAA8A8AAPw/AAA=" rel="icon" type="image/x-icon" />
     <title>Pokedex</title>
 </head>
 
 <body>
-    <!-- User's input div -->
-    <div class="container-fluid">
-        <div id="catch-Pokemon">
-            <div class="mirror">
+    <div class="container">
+        <!-- User's input div -->
+        <div class="mirror">
+            <div id="catch-Pokemon">
                 <img class="pokemon-icon" src="https://pluspng.com/img-png/pokemon-logo-png-pokemon-logo-png-2000.png">
                 <input id="getPokemon" spellcheck="false" onfocus="this.value=''" type="text" class="pkmName"
                     placeholder="Name or ID" name="getPokemon">
                 <button type="submit" id="submitPokemon" onclick="pokemonSearch()"><i class="pokeball"></i></button>
             </div>
         </div>
-    </div>
-    <!-- Swiper 3d Cube div -->
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div id="firstSlide" class="swiper-slide"></div>
-            <div id="secondSlide" class="swiper-slide"></div>
-            <div id="thirdSlide" class="swiper-slide"></div>
-            <div id="fourthSlide" class="swiper-slide"></div>
-            <div id="fifthSlide" class="swiper-slide"></div>
+        <!-- Swiper 3d Cube div -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div id="firstSlide" class="swiper-slide"></div>
+                <div id="secondSlide" class="swiper-slide"></div>
+                <div id="thirdSlide" class="swiper-slide"></div>
+                <div id="fourthSlide" class="swiper-slide"></div>
+                <div id="fifthSlide" class="swiper-slide"></div>
+            </div>
+            <div class="swiper-pagination"></div>
         </div>
-        <div class="swiper-pagination"></div>
     </div>
+    <!-- My JS Script -->
     <script src="app.js"></script>
     <!-- Swiper Javascript -->
     <script type="text/javascript">
