@@ -84,6 +84,21 @@ html, body {
 	animation: growing 5s;
 	animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+#secondSlide {
+	text-align: center;
+	font-family: 'Courier New', Courier, monospace;
+}
+#thirdSlide {
+	text-align: center;
+	font-family: 'Courier New', Courier, monospace;
+	line-height: 140%;
+	display: flex;
+	flex-wrap: wrap;
+	align-content:center;
+}
+#fourthSlide, #fifthSlide {
+	line-height: 130%;
+}
 .titleNAME, .titleTYPE, .titleABILITY {
 	background-color: #2980b9;
 	margin: 18px auto;
@@ -99,21 +114,6 @@ html, body {
 	font-style: italic;
 	padding: 1.5px;
 	line-height: 110%;
-}
-#secondSlide {
-	text-align: center;
-	font-family: 'Courier New', Courier, monospace;
-}
-#thirdSlide {
-	text-align: center;
-	font-family: 'Courier New', Courier, monospace;
-	line-height: 140%;
-	display: flex;
-	flex-wrap: wrap;
-	align-content:center;
-}
-#fourthSlide, #fifthSlide {
-	line-height: 130%;
 }
 .ability {
 	color: white;
@@ -141,13 +141,6 @@ html, body {
 	font-style: italic;
 }
 @media only screen and (min-width: 1200px) {
-	.container {
-		flex-wrap: wrap;
-		display: flex;
-		height: 100%;
-		justify-content: center;
-		align-items: center;
-	}
 	.mirror{
 		padding-top: 50px;
 		width: 450px; 
