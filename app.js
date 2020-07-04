@@ -2,7 +2,7 @@
 function pokemonSearch() {
   // Receives the user's input field value
   let receiveData = document.getElementById('getPokemon').value.toLowerCase();
-  // Used as parameter of functions to replace commas for vertical bars
+  // Used as parameter of functions to replace commas
   let regex = /(,)/g;
   // Returns the image in the first slide
   pokeImage(receiveData);
