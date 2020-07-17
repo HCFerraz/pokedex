@@ -1,6 +1,6 @@
 # About the Project
 
-Hi! This is my first project using API endpoints. Uniting two of my passions, tech and pokémon, I made a search website, also known as a Pokedex. Using Swiper JS lib, the website displays some of information about the pokémon you want to know on each and every side of the cube.
+Hi! This is my first project using API endpoints. Uniting two of my passions, tech and pokémon, I made a search website, also known as a Pokedex. Using [Swiper JS](https://swiperjs.com/) lib, the website displays some of information about the pokémon you want to know on each and every side of the cube.
 The website contains a spinning cube, which allows the user to interact with it by grabbing and scrolling the cube right and left.
 Have a nice search!
 
